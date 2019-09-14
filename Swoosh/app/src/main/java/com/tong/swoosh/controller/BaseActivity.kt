@@ -1,4 +1,4 @@
-package com.tong.swoosh
+package com.tong.swoosh.controller
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

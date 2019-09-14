@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SkillActivity">
+        tools:context=".controller.SkillActivity">
 
     <ImageView
             android:layout_width="0dp"
@@ -42,25 +42,27 @@
         <ToggleButton
                 android:text="ToggleButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/toggleButton6" android:layout_weight="1"
+                android:layout_height="wrap_content" android:layout_weight="1"
                 android:background="@drawable/swoosh_toggle" android:textColor="@color/colorAccent"
                 android:checked="false" android:textOff="BALLER" android:textOn="BALLER" tools:text="BALLER"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp" android:id="@+id/ballerSkillBtn"
+                android:onClick="onSkillBallerClicked"/>
         <ToggleButton
                 android:text="BEGINNER"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/toggleButton7" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/beginnerSkillBtn" android:layout_weight="1"
                 android:background="@drawable/swoosh_toggle" android:textColor="@color/colorAccent"
-                android:textOff="BEGINNER" android:textOn="BEGINNER" android:layout_marginLeft="16dp"/>
+                android:textOff="BEGINNER" android:textOn="BEGINNER" android:layout_marginLeft="16dp"
+                android:onClick="onSkillBeginnerClicked"/>
     </LinearLayout>
     <Button
             android:text="Finish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:id="@+id/skillFInishBtn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:textColor="@color/colorAccent"
-            android:background="@drawable/swoosh_button"/>
+            android:background="@drawable/swoosh_button" android:onClick="onSkillFinishClicked"/>
 
 </android.support.constraint.ConstraintLayout>
