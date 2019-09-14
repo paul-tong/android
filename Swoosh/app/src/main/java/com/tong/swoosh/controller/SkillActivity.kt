@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Toast
 import com.tong.swoosh.utilities.EXTRA_LEAGUE
 import com.tong.swoosh.R
+import com.tong.swoosh.model.Player
+import com.tong.swoosh.utilities.EXTRA_PLAYER
 import com.tong.swoosh.utilities.EXTRA_SKILL
 import kotlinx.android.synthetic.main.activity_skill.*
 
@@ -14,36 +16,37 @@ class SkillActivity : AppCompatActivity() {
     var league = ""
     var skill = ""
 
+    lateinit var player: Player
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill)
 
-        league = intent.getStringExtra(EXTRA_LEAGUE)
-        println("skill activity: $league")
-
-    }
-
-    fun onSkillFinishClicked(view: View) {
-        if (skill != "") {
-            val finishIntent = Intent(this, FinishActivity::class.java)
-            finishIntent.putExtra(EXTRA_LEAGUE, league)
-            finishIntent.putExtra(EXTRA_SKILL, skill)
-
-            startActivity(finishIntent)
-        }
-        else {
-            Toast.makeText(this, "Please select a skill", Toast.LENGTH_SHORT).show()
-        }
+        player = intent.getParcelableExtra(EXTRA_PLAYER)
+        // league = intent.getStringExtra(EXTRA_LEAGUE)
     }
 
     fun onSkillBallerClicked(view: View) {
         beginnerSkillBtn.isChecked = false
-        skill = "baller"
+        player.skill = "baller"
 
     }
 
     fun onSkillBeginnerClicked(view: View) {
         ballerSkillBtn.isChecked = false
-        skill = "beginner"
+        player.skill = "beginner"
+    }
+
+    fun onSkillFinishClicked(view: View) {
+        if (player.skill != "") {
+            val finishIntent = Intent(this, FinishActivity::class.java)
+            //finishIntent.putExtra(EXTRA_LEAGUE, league)
+            //finishIntent.putExtra(EXTRA_SKILL, skill)
+            finishIntent.putExtra(EXTRA_PLAYER, player)
+            startActivity(finishIntent)
+        }
+        else {
+            Toast.makeText(this, "Please select a skill", Toast.LENGTH_SHORT).show()
+        }
     }
 }
