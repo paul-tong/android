@@ -26,6 +26,20 @@ class SkillActivity : AppCompatActivity() {
         // league = intent.getStringExtra(EXTRA_LEAGUE)
     }
 
+    // save player to the state
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putParcelable(EXTRA_PLAYER, player)
+    }
+
+    // get player from saved state (after rotation)
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        if (savedInstanceState != null) {
+            player = savedInstanceState.getParcelable(EXTRA_PLAYER)
+        }
+    }
+
     fun onSkillBallerClicked(view: View) {
         beginnerSkillBtn.isChecked = false
         player.skill = "baller"
